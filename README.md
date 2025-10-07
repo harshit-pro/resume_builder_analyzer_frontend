@@ -10,13 +10,18 @@
 </p>
 
 <p align="center">
+  <a href="https://resumex1.netlify.app/" target="_blank">
+    <img src="https://img.shields.io/badge/🔗 Visit_Project-000000?style=for-the-badge&logo=vercel&logoColor=white"/>
+  </a>
+</p>
+
+<p align="center">
   <img src="https://img.shields.io/badge/React-18-blue?logo=react&logoColor=white"/>
   <img src="https://img.shields.io/badge/Vite-Build-FB9E00?logo=vite&logoColor=white"/>
   <img src="https://img.shields.io/badge/Tailwind-3.0-06B6D4?logo=tailwindcss&logoColor=white"/>
   <img src="https://img.shields.io/badge/DaisyUI-Components-EC4899?logo=daisyui&logoColor=white"/>
   <img src="https://img.shields.io/badge/License-MIT-green"/>
 </p>
-
 ---
 
 ## 🧠 Overview
