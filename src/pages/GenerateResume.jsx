@@ -189,14 +189,14 @@ const GenerateResume = () => {
 
       toast.success(`Resume ${isEdit ? 'updated' : 'saved'} successfully!`);
 
-      if (!isEdit) {
+      // For new resumes, redirect to the edit route but keep form UI
+      if (!isEdit && response?.data?.id) {
         navigate(`/edit-resume/${response.data.id}`, { replace: true });
-      } else {
-        navigate("/dashboard");
       }
 
+      // Update local state and keep the user on the form view
       setData(formData);
-      setCurrentView('resume');
+      setCurrentView('form');
     } catch (error) {
       toast.error(
         error.response?.data?.message ||
