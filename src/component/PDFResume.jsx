@@ -127,38 +127,38 @@ const PDFResume = ({ data }) => (
         </View>
       )}
 
-         {/* Professional Experience */}
-{data.experience && data.experience.length > 0 && (
-  <View style={{ marginBottom: 10 }}>
-    <Text style={styles.sectionTitle}>EXPERIENCE</Text>
-    {data.experience.map((exp, index) => (
-      <View key={index} style={{ marginBottom: 8 }}>
-        <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }}>
-          <Text style={{ fontWeight: 'bold', fontSize: 12 }}>
-            {exp.jobTitle} | {exp.company}
-          </Text>
-          <Text style={{ color: '#718096', fontSize: 10 }}>
-            {exp.duration}
-          </Text>
+      {/* Professional Experience */}
+      {data.experience && data.experience.length > 0 && (
+        <View style={{ marginBottom: 10 }}>
+          <Text style={styles.sectionTitle}>EXPERIENCE</Text>
+          {data.experience.map((exp, index) => (
+            <View key={index} style={{ marginBottom: 8 }}>
+              <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }}>
+                <Text style={{ fontWeight: 'bold', fontSize: 12 }}>
+                  {exp.jobTitle} | {exp.company}
+                </Text>
+                <Text style={{ color: '#718096', fontSize: 10 }}>
+                  {exp.duration}
+                </Text>
+              </View>
+              <Text style={{ color: '#718096', fontSize: 10, marginBottom: 3 }}>
+                {exp.location}
+              </Text>
+              {/* Show the full description under duration & location */}
+              {exp.description && (
+                <Text style={{ fontSize: 10, color: '#4A5568', marginTop: 2 }}>
+                  {Array.isArray(exp.description)
+                    ? exp.description.join(" ") // Join array elements into a single string
+                    : exp.description} {/* If string, display as is */}
+                </Text>
+              )}
+            </View>
+          ))}
         </View>
-        <Text style={{ color: '#718096', fontSize: 10, marginBottom: 3 }}>
-          {exp.location}
-        </Text>
-        {/* Show the full description under duration & location */}
-        {exp.description && (
-          <Text style={{ fontSize: 10, color: '#4A5568', marginTop: 2 }}>
-            {Array.isArray(exp.description)
-              ? exp.description.join(" ") // Join array elements into a single string
-              : exp.description} {/* If string, display as is */}
-          </Text>
-        )}
-      </View>
-    ))}
-  </View>
-)}
+      )}
 
-       {/* Education */}
-       {data.education && data.education.length > 0 && (
+      {/* Education */}
+      {data.education && data.education.length > 0 && (
         <View style={{ marginBottom: 4 }}>
           <Text style={styles.sectionTitle}>EDUCATION</Text>
           {data.education.map((edu, index) => (
@@ -208,7 +208,7 @@ const PDFResume = ({ data }) => (
           </View>
         </View>
       )}
-   
+
 
       {/* Project Experience */}
       {data.projects && data.projects.length > 0 && (
@@ -260,7 +260,7 @@ const PDFResume = ({ data }) => (
         </View>
       )}
 
-     
+
       {/* Certifications */}
       {data.certifications && data.certifications.length > 0 && (
         <View style={{ marginBottom: 6 }}>
@@ -276,34 +276,34 @@ const PDFResume = ({ data }) => (
       )}
 
       {/* Achievements Section */}
-{data.achievements && data.achievements.length > 0 && (
-  <View style={{ marginBottom: 10 }}>
-    <Text style={styles.sectionTitle}>ACHIEVEMENTS</Text>
-    {data.achievements.map((achievement, index) => (
-      <View key={index} style={{ marginBottom: 10 }}>
-        {/* Title on the Left */}
-        <Text style={{ fontWeight: 'bold', fontSize: 12 }}>{achievement.title}</Text>
-        {/* Description on the Left */}
-        {achievement.description && (
-          <Text style={{ fontSize: 10, color: '#4A5568', marginTop: 2 }}>
-            {achievement.description}
-          </Text>
-        )}
-        {/* Link on the Right */}
-        {achievement.link && (
-          <View style={{ flexDirection: 'row', justifyContent: 'flex-end' }}>
-            <Link
-              src={achievement.link}
-              style={{ fontSize: 10, color: '#4299e1', textDecoration: 'underline' }}
-            >
-              View Achievement
-            </Link>
-          </View>
-        )}
-      </View>
-    ))}
-  </View>
-)}
+      {data.achievements && data.achievements.length > 0 && (
+        <View style={{ marginBottom: 10 }}>
+          <Text style={styles.sectionTitle}>ACHIEVEMENTS</Text>
+          {data.achievements.map((achievement, index) => (
+            <View key={index} style={{ marginBottom: 10 }}>
+              {/* Title on the Left */}
+              <Text style={{ fontWeight: 'bold', fontSize: 12 }}>{achievement.title}</Text>
+              {/* Description on the Left */}
+              {achievement.description && (
+                <Text style={{ fontSize: 10, color: '#4A5568', marginTop: 2 }}>
+                  {achievement.description}
+                </Text>
+              )}
+              {/* Link on the Right */}
+              {achievement.link && (
+                <View style={{ flexDirection: 'row', justifyContent: 'flex-end' }}>
+                  <Link
+                    src={achievement.link}
+                    style={{ fontSize: 10, color: '#4299e1', textDecoration: 'underline' }}
+                  >
+                    View Achievement
+                  </Link>
+                </View>
+              )}
+            </View>
+          ))}
+        </View>
+      )}
 
 
       {/* Languages and Interests Side by Side */}
@@ -370,7 +370,6 @@ export const PDFDownloadButton = ({ data }) => {
     >
       {({ loading, error }) => {
         if (error) {
-          console.error('PDF Generation Error:', error);
           return (
             <button className="btn btn-error text-xs px-3 py-1">
               Error Generating PDF

@@ -25,7 +25,6 @@ const ResumeViewer = () => {
         setResumeData(response.data.content);
         setLoading(false);
       } catch (error) {
-        console.error('Error fetching resume:', error);
         setLoading(false);
       }
     };

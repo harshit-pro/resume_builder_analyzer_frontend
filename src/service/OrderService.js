@@ -9,7 +9,6 @@ export const place_Order = async ({ planId, getToken, onSuccess }) => {
 
     try {
         const token = await getToken();
-        console.log("Token: ", token);
         const response = await http.post(`/api/orders?planId=${planId}`, {},
             {
                 headers: {
@@ -17,7 +16,7 @@ export const place_Order = async ({ planId, getToken, onSuccess }) => {
                 }
             }
         );
-        console.log("Order Response:", response.data);
+
 
         if (response.status === 200) {
             initializePayment({ order: response.data.data, getToken, onSuccess });
@@ -28,7 +27,6 @@ export const place_Order = async ({ planId, getToken, onSuccess }) => {
     } catch (error) {
 
         toast.error("Error placing order. Please try again later." + error.message);
-        console.error("Error placing order:", error.message);
         // Re-throw the error for further handling 
 
     }
@@ -46,7 +44,6 @@ const initializePayment = ({ order, getToken, onSuccess }) => {
         receipt: order.receipt,
         handler: async (paymentDetails) => {
             try {
-                console.log("Payment Details:", paymentDetails);
                 const token = await getToken();
                 const response = await http.post(`/api/orders/verify`, paymentDetails,
                     { headers: { Authorization: `Bearer ${token}` } }
@@ -58,7 +55,6 @@ const initializePayment = ({ order, getToken, onSuccess }) => {
                 }
             } catch (error) {
                 toast.error("Error verifying payment. Please try again later." + error.message);
-                console.error("Error verifying payment:");
             }
 
         }

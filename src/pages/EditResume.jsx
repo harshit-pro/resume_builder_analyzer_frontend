@@ -23,7 +23,7 @@
 //         setResumeData(response.data);
 //         setLoading(false);
 //       } catch (error) {
-//         console.error('Error fetching resume:', error);
+//         /* error handled via navigation */
 //         navigate('/dashboard');
 //       }
 //     };
@@ -76,7 +76,6 @@ const EditResume = () => {
         );
         setLoading(false);
       } catch (err) {
-        console.error('Error fetching resume by ID:', err);
       }
     };
 
@@ -101,7 +100,6 @@ const EditResume = () => {
       );
       navigate('/dashboard'); // Redirect after update
     } catch (err) {
-      console.error('Error updating resume:', err);
     }
   };
 

@@ -26,7 +26,6 @@ const Dashboards = () => {
       });
       setResumes(response.data);
     } catch (err) {
-      console.error('Error fetching resumes:', err);
       setError(err.message);
       toast.error("Failed to load resumes. Please try again.");
     } finally {
@@ -44,7 +43,6 @@ const Dashboards = () => {
         toast.success(`"${title}" deleted successfully`);
         fetchResumes();
       } catch (err) {
-        console.error('Error deleting resume:', err);
         toast.error("Failed to delete resume.");
       }
     }

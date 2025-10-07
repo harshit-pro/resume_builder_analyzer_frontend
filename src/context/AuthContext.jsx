@@ -12,7 +12,6 @@ import toast from 'react-hot-toast';
 const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
-  console.log("Component rendering");
   const backendUrl = import.meta.env.VITE_BACKEND_URL2;
   const { user, isSignedIn } = useUser();
   const { openSignIn } = useClerk();
@@ -40,18 +39,10 @@ export const AuthProvider = ({ children }) => {
       });
       if (response.data.success) {
         setCredits(response.data.data.credits);
-        console.log('User credits fetched successfully:', response.data.data.credits);
       } else {
         toast.error('Failed to fetch user credits in try');
-        console.error('Fetch error:', response.data.message);
       }
     } catch (error) {
-      console.error('Detailed error:', {
-        message: error.message,
-        response: error.response?.data,
-        status: error.response?.status,
-        config: error.config
-      });
       toast.error(`Failed to fetch credits: ${error.response?.data?.message || error.message}`);
     } finally {
       setIsLoadingCredits(false);
@@ -77,7 +68,6 @@ export const AuthProvider = ({ children }) => {
           },
         }
       );
-      console.log('Deducting credit for service type:', serviceType);
       if (response.data.success) {
         setCredits(response.data.data.credits);
         return true;
@@ -87,14 +77,11 @@ export const AuthProvider = ({ children }) => {
       }
     } catch (error) {
       toast.error('Failed to deduct credit');
-      console.error('Error deducting credit:', error);
       return false;
     }
   };
   useEffect(() => {
-    console.log('useEffect triggered');
     if (isSignedIn && user) {
-      console.log('User is signed in:', user.email);
       loadUserCredits();
     }
   }, [isSignedIn, user]);

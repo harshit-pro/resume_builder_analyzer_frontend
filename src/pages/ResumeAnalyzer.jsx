@@ -44,7 +44,7 @@ const ResumeAnalyzer = () => {
       formData.append("jobDescription", jobDescription);
       formData.append("resume", resume);
 
-      console.log("Submitting data to backend:");
+      // submitting data to backend
       const isRetryableError = (err) => {
         const status = err?.response?.status;
         const code = err?.code;
@@ -73,7 +73,6 @@ const ResumeAnalyzer = () => {
         } catch (err) {
           if (attempt < maxAttempts && isRetryableError(err)) {
             const backoffMs = attempt * 1500;
-            console.warn(`Analyze attempt ${attempt} failed, retrying in ${backoffMs}ms...`, err?.message);
             await new Promise((r) => setTimeout(r, backoffMs));
             continue;
           }
@@ -90,14 +89,14 @@ const ResumeAnalyzer = () => {
           throw err; // non-retryable or last attempt
         }
       }
-      console.log("Response from backend:", response.data);
+      // response received from backend
       // Normalize payload: parse JSON strings and allow optional wrappers
       let payload = response?.data ?? {};
       if (typeof payload === 'string') {
         try {
           payload = JSON.parse(payload);
         } catch (e) {
-          console.warn('Analyzer returned a string that is not valid JSON; using raw string.');
+          // analyzer returned a non-JSON string; using raw string
         }
       }
 
@@ -203,11 +202,10 @@ const ResumeAnalyzer = () => {
           missingKeywords,
           profileSummary,
         };
-        console.log("Analysis results:", newAnalysis);
+        // analysis results prepared
 
         // Deduct credit AFTER successful analysis
         const creditDeducted = await deductCredit('resume_analysis');
-        console.log("Credit deduction status:", creditDeducted?.success ?? creditDeducted);
         if (!creditDeducted) {
           throw new Error("Failed to deduct credit");
         }
@@ -219,7 +217,7 @@ const ResumeAnalyzer = () => {
     } catch (err) {
       setError("Failed to analyze resume. Please try again.");
       toast.error(err.message || "Failed to analyze resume");
-      console.error(err);
+      // swallow internal error logging in production
     } finally {
       setLoading(false);
     }

@@ -26,7 +26,7 @@ export default function Contact() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
-    
+
     try {
       const response = await fetch(`${API_URL}/api/send-email`, {
         method: 'POST',
@@ -39,7 +39,6 @@ export default function Contact() {
       alert("Email sent successfully!");
       setFormData({ name: '', email: '', message: '' }); // Reset form
     } catch (error) {
-      console.error("Error:", error);
       alert(error.message || "Failed to send message");
     } finally {
       setIsSubmitting(false);

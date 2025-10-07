@@ -117,7 +117,6 @@ const GenerateResume = () => {
         reset(formattedResume);
         setCurrentView('form');
       } catch (error) {
-        console.error("Error fetching resume:", error);
         toast.error("Failed to fetch your resume");
         navigate("/dashboard");
       } finally {
@@ -199,7 +198,6 @@ const GenerateResume = () => {
       setData(formData);
       setCurrentView('resume');
     } catch (error) {
-      console.error("Save error:", error);
       toast.error(
         error.response?.data?.message ||
         error.message ||
@@ -340,7 +338,6 @@ const GenerateResume = () => {
 
       return formattedResume;
     } catch (error) {
-      console.error("Error mapping resume data:", error);
       return formattedResume;
     }
   }, []);

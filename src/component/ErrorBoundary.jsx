@@ -12,7 +12,7 @@ export default class ErrorBoundary extends Component {
 
   componentDidCatch(error, info) {
     // TODO: Hook into a monitoring service like Sentry/LogRocket
-    console.error('Unhandled UI error:', error, info);
+    // intentionally no console logging in production
   }
 
   render() {
