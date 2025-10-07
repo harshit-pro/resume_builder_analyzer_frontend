@@ -1,7 +1,7 @@
 
 <h1 align="center">
   <img src="https://cdn-icons-png.flaticon.com/512/9421/9421360.png" width="80" alt="ResumeIQ Icon"/><br/>
-  ✨ ResumeIQ — AI Resume Builder & Analyzer (Frontend)
+  ✨ ResumeX — AI Resume Builder & Analyzer (Frontend)
 </h1>
 
 <p align="center">
