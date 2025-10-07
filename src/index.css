@@ -1,0 +1,46 @@
+/* stylelint-disable at-rule-no-unknown */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Glassmorphism helpers */
+@layer utilities {
+  .glass {
+    @apply bg-white/40 backdrop-blur-md border border-white/50 shadow-sm;
+  }
+
+  .glass-card {
+    @apply bg-white/50 backdrop-blur-xl border border-white/60 shadow-lg rounded-2xl;
+  }
+
+  .glass-dark {
+    @apply bg-black/20 backdrop-blur-md border border-white/20 shadow-sm;
+  }
+}
+
+/* stylelint-enable at-rule-no-unknown */
+
+:root {
+  --primary-color: #f0f0f0;
+  /* fallback */
+  /* or simply avoid using oklch if not necessary */
+}
+
+
+@keyframes float {
+  0% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(-20px);
+  }
+
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+.floating {
+  animation: float 3s ease-in-out infinite;
+}
